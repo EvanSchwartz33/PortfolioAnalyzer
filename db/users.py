@@ -6,9 +6,6 @@ import time
 def create_user(username, password, salt):
     con = sqlite3.connect("database.db")
     cur = con.cursor()
-    
-
-
 
     query = """INSERT INTO users
                     (username, hashed_password, salt) VALUES (?,?,?);"""
@@ -30,13 +27,17 @@ def get_user(username):
 
     return row
 
+
+def remove_user(username, user_id):
+    con = sqlite3.connect("database.db")
+    cur = con.cursor()
+    query = "DELETE FROM stocks WHERE user_id = ?"
+    cur.execute(query, (user_id,))
+
+    query = "DELETE FROM users WHERE username = ?"
+    cur.execute(query, (username,))
+    con.commit()
+    con.close()
+    return True
     
-
-def edit_user():
-    
-    pass
-
-def remove_user():
-
-    pass
 

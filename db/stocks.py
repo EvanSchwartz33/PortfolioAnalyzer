@@ -51,7 +51,13 @@ def update_stock(user_id, ticker, n_shares, avg_price):
     con.close()
     return True
 
+
+def grab_all_stocks(user_id):
+
+    
+
     pass
+
 
 def remove_stock(ticker, user_id):
     con = sqlite3.connect("database.db")
@@ -61,6 +67,8 @@ def remove_stock(ticker, user_id):
     con.commit()
     con.close()
     return True
+
+
 
     
 
